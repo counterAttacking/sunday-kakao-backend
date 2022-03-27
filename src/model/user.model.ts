@@ -1,4 +1,5 @@
-import { AllowNull, AutoIncrement, Column, DataType, Default, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { AllowNull, AutoIncrement, Column, DataType, Default, HasMany, Model, PrimaryKey, Table } from "sequelize-typescript";
+import Friend from "./friend.model";
 
 @Table
 export default class User extends Model {
@@ -19,4 +20,7 @@ export default class User extends Model {
     @Default("")
     @Column(DataType.STRING(100))
     statusMessage: string;
+
+    @HasMany(() => Friend)
+    myFriends: User[];
 }
